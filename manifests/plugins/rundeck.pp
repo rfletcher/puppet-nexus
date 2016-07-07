@@ -28,7 +28,7 @@ class nexus::plugins::rundeck (
     default => $nexus_work_dir,
   }
 
-  include ::unzip
+  include ::zip
 
   $archive_name = basename( $source, '.zip' )
   $root_dir     = "nexus-rundeck-plugin-${version}"
@@ -42,7 +42,7 @@ class nexus::plugins::rundeck (
     root_dir      => $root_dir,
     target        => $target_dir,
     url           => $source,
-    require       => Class['::unzip'],
+    require       => Class['::zip'],
     notify        => Service['nexus'],
   } ->
 
